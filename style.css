@@ -23,7 +23,6 @@
 html
 {
     font-size: 62.5%;
-    overflow: hidden;
     scroll-behavior: smooth;
 }
 
@@ -41,6 +40,7 @@ header
     align-items: center;
     justify-content: space-between;
     box-shadow: var(--box-shadow);
+    z-index: 1000;
 }
 
 header .logo img
@@ -90,6 +90,111 @@ header .icons #menu
 
 /* Nav bar styling ends here*/
 
+
+/* Slider styling begins here */
+
+.home .home-slider .slide
+{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: flex-start;
+}
+
+.home .home-slider .slide1
+{
+    background: url(images/image-product-1.jpg);
+}
+.home .home-slider .slide2
+{
+    background: url(images/image-product-2.jpg);
+}
+.home .home-slider .slide3
+{
+    background: url(images/image-product-3.jpg);
+}
+
+.home .home-slider .slide1,
+.home .home-slider .slide2,
+.home .home-slider .slide3
+{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home .home-slider .slide .content
+{
+    text-align: center;
+    padding-left: 9rem;
+}
+
+.home .home-slider .slide .content h3
+{
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+.home .home-slider .slide .content h1
+{
+    color: #fff;
+    font-size: 5rem;
+}
+
+.home .home-slider .slide .content p
+{
+    color: #e6e7e7;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    padding: .5rem 0;
+    line-height: 1.5;
+    font-weight: 200;
+}
+
+.btn
+{
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 1.7rem;
+    color: #fff;
+    border: .1rem solid rgba(205,170,124,0.2);
+    background: transparent;
+    cursor: pointer;
+    padding: .8rem 3rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before
+{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: var(--light-color);
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: .5s;
+}
+
+.btn:hover.btn::before
+{
+    left: 0;
+}
+
+.swiper-pagination-bullet
+{
+    background: var(--black)!important;
+    width: 15px!important;
+    height: 15px!important;
+    border-radius: 0!important;
+}
+
+
+
+
+/* Slider styling ends here */
 
 /* media query */
 @media (max-width: 991px)
@@ -143,4 +248,21 @@ header .icons #menu
         font-size: 2rem;
         background: var(--black);
     }
+
+    /* slider media query */
+
+        .home .home-slider .slide
+    {
+        justify-content: center;
+        height: 80vh;
+    }
+    .home .home-slider .slide .content
+    {
+        padding: 0;
+    }
+    .home .home-slider .slide .content h1
+    {
+        font-size: 7rem;
+    }
+
 }

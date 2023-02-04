@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <title>Document</title>
 </head>
 <body>
@@ -34,12 +36,13 @@
     <!---Slider section starts here-->
 
     <div class="home" id="home">
-        <div class="home-slider">
-            <div class="wrapper">
-                <div class="slide slide1">
+        <div class="swiper home-slider">
+            <div class="swiper-wrapper wrapper">
+                <div class="swiper-slide slide slide1">
                     <div class="content">
-                        <img src="" alt="">
+                        <img src="images/image-product-1-thumbnail.jpg" alt="Sneakers">
                         <h3>delicious royale</h3>
+                        <h1>Gift voucher</h1>
                         <p>
                             Give away to your beloved customers
                         </p>
@@ -47,9 +50,9 @@
                     </div>
                 </div>
 
-                <div class="slide slide2">
+                <div class="swiper-slide slide slide2">
                     <div class="content">
-                        <img src="" alt="">
+                        <img src="images/image-product-2-thumbnail.jpg" alt="Sneakers">
                         <h3>Sales 10% off</h3>
                         <h1>The product</h1>
                         <p>
@@ -59,9 +62,9 @@
                     </div>
                 </div>
 
-                <div class="slide slide1">
+                <div class="swiper-slide slide slide3">
                     <div class="content">
-                        <img src="" alt="">
+                        <img src="images/image-product-3-thumbnail.jpg" alt="Sneakers">
                         <h3>We are open</h3>
                         <h1>New products</h1>
                         <p>
@@ -71,12 +74,40 @@
                     </div>
                 </div>
             </div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 
     <!---Slider section ends here-->
 
 
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <!-- Initialize Swiper -->
+   <script>
+     const progressCircle = document.querySelector(".autoplay-progress svg");
+     const progressContent = document.querySelector(".autoplay-progress span");
+     var swiper = new Swiper(".home-slider", {
+       spaceBetween: 30,
+       centeredSlides: true,
+       autoplay: {
+         delay: 7500,
+         disableOnInteraction: false
+       },
+       pagination: {
+         el: ".swiper-pagination",
+         clickable: true
+       },
+       loop: true,
+       on: {
+         autoplayTimeLeft(s, time, progress) {
+           progressCircle.style.setProperty("--progress", 1 - progress);
+           progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+         }
+       }
+     });
+   </script>
 
     <script type="text/javascript">
         let menu = document.querySelector('#menu');
